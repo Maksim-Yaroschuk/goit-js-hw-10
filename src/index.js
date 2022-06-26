@@ -8,8 +8,11 @@ const DEBOUNCE_DELAY = 300;
 const inputCountry = document.querySelector("#search-box")
 const infoCountry = document.querySelector(".country-info")
 const listCountry = document.querySelector(".country-list")
-inputCountry.addEventListener("input", debounce(onGetCountry, DEBOUNCE_DELAY))
+
 let markup = ""
+
+inputCountry.addEventListener("input", debounce(onGetCountry, DEBOUNCE_DELAY))
+
 
 function onGetCountry(event) {
   const inputValue = event.target.value
