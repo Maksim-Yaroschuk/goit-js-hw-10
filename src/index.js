@@ -12,16 +12,14 @@ inputCountry.addEventListener("input", debounce(onGetCountry, DEBOUNCE_DELAY))
 let markup = ""
 
 function onGetCountry(event) {
-    console.log(event.target.value)
-
-  if (event.target.value === "") {
+  const inputValue = event.target.value
+  if (inputValue === "") {
     clearField()
     return
   }
   
-  fetchCountries(event.target.value)
+  fetchCountries(inputValue)
     .then((countries) => {
-      console.log(countries.length)
       if (countries.length === 1) {
         clearField()
         renderInfoCountry(countries)
