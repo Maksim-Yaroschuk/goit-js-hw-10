@@ -1,6 +1,7 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 import { Notify } from 'notiflix';
+import { fetchCountries } from "./fetchCountries"
 
 const DEBOUNCE_DELAY = 300;
 
@@ -51,7 +52,6 @@ function renderInfoCountry(countries) {
 }
 
 function renderListCountry(countries) {
-  
   countries.map(({ flags, name }) => {
   listCountry.style = `list-style-type: none`
   markup = `<li><img width="30", heigth="15" src="${flags.svg}"> ${name.official}</li>`
@@ -62,16 +62,4 @@ function renderListCountry(countries) {
 function clearField() {
     listCountry.innerHTML = ""
     infoCountry.innerHTML = ""
-}
-
-function fetchCountries(name) {
-  return fetch(`https://restcountries.com/v3.1/name/${name}?fields=flags,name,capital,population,languages`).then(
-    (response) => {
-      if (!response.ok) {
-        throw new Error(response.status);
-        
-      }
-      return response.json();
-    }
-  );
 }
